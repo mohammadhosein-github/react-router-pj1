@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Loadable from "react-loadable";
+import Loading from "./pages/Loading/Loading";
 import ErrorPage from "./pages/Error/Error";
 import eye from "./media/eye.jpg";
 import arm from "./media/arm.jpg";
@@ -13,86 +14,22 @@ import "./App.scss";
 
 const LoadableHomePage = Loadable({
   loader: () => import("./pages/Home/Home"),
-  loading: () => (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100vh",
-        width: "100vw",
-        backgroundColor: "#000",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <h1>loading...</h1>
-    </div>
-  )
+  loading: Loading
 });
 
 const LoadableAboutPage = Loadable({
   loader: () => import("./pages/About/About"),
-  loading: () => (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100vh",
-        width: "100vw",
-        backgroundColor: "#000",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <h1>loading...</h1>
-    </div>
-  )
+  loading: Loading
 });
 
 const LoadableAchievementPage = Loadable({
   loader: () => import("./pages/Achievements/Achievements"),
-  loading: () => (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100vh",
-        width: "100vw",
-        backgroundColor: "#000",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <h1>loading...</h1>
-    </div>
-  )
+  loading: Loading
 });
 
 const LoadableContactPage = Loadable({
   loader: () => import("./pages/Contact/Contact"),
-  loading: () => (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        height: "100vh",
-        width: "100vw",
-        backgroundColor: "#000",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center"
-      }}
-    >
-      <h1>loading...</h1>
-    </div>
-  )
+  loading: Loading
 });
 
 class App extends Component {
@@ -161,27 +98,27 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-              <Route path="/" exact component={LoadableHomePage} />
-              <Route
-                path="/achievements"
-                render={({ props }) => (
-                  <LoadableAchievementPage
-                    {...props}
-                    products={this.state.products}
-                  />
-                )}
-              />
-              <Route
-                path="/about"
-                render={({ props }) => (
-                  <LoadableAboutPage
-                    {...props}
-                    departments={this.state.departments}
-                  />
-                )}
-              />
-              <Route path="/join-us" component={LoadableContactPage} />
-              <Route component={ErrorPage} />
+            <Route path="/" exact component={LoadableHomePage} />
+            <Route
+              path="/achievements"
+              render={({ props }) => (
+                <LoadableAchievementPage
+                  {...props}
+                  products={this.state.products}
+                />
+              )}
+            />
+            <Route
+              path="/about"
+              render={({ props }) => (
+                <LoadableAboutPage
+                  {...props}
+                  departments={this.state.departments}
+                />
+              )}
+            />
+            <Route path="/join-us" component={LoadableContactPage} />
+            <Route component={ErrorPage} />
           </Switch>
         </div>
       </Router>
