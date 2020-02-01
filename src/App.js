@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Loadable from "react-loadable";
-import Loading from "./pages/Loading/Loading";
 import ErrorPage from "./pages/Error/Error";
+import Home from "./pages/Home/Home";
+import Achievements from "./pages/Achievements/Achievements";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
 import eye from "./media/eye.jpg";
 import arm from "./media/arm.jpg";
 import face from "./media/face2.jpg";
@@ -11,26 +13,6 @@ import data_analysis from "./media/data-analysis.jpg";
 import robotics from "./media/robotics.jpg";
 import biology from "./media/biology.jpg";
 import "./App.scss";
-
-const LoadableHomePage = Loadable({
-  loader: () => import("./pages/Home/Home"),
-  loading: Loading
-});
-
-const LoadableAboutPage = Loadable({
-  loader: () => import("./pages/About/About"),
-  loading: Loading
-});
-
-const LoadableAchievementPage = Loadable({
-  loader: () => import("./pages/Achievements/Achievements"),
-  loading: Loading
-});
-
-const LoadableContactPage = Loadable({
-  loader: () => import("./pages/Contact/Contact"),
-  loading: Loading
-});
 
 class App extends Component {
   state = {
@@ -98,26 +80,20 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <Route path="/" exact component={LoadableHomePage} />
+            <Route path="/" exact component={Home} />
             <Route
               path="/achievements"
               render={({ props }) => (
-                <LoadableAchievementPage
-                  {...props}
-                  products={this.state.products}
-                />
+                <Achievements {...props} products={this.state.products} />
               )}
             />
             <Route
               path="/about"
               render={({ props }) => (
-                <LoadableAboutPage
-                  {...props}
-                  departments={this.state.departments}
-                />
+                <About {...props} departments={this.state.departments} />
               )}
             />
-            <Route path="/join-us" component={LoadableContactPage} />
+            <Route path="/join-us" component={Contact} />
             <Route component={ErrorPage} />
           </Switch>
         </div>

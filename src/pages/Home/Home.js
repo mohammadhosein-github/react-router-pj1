@@ -2,11 +2,21 @@ import React, { Component } from "react";
 import BgVideo from "../../media/homepage_background.mp4";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
+import Loading from "../Loading/Loading";
+
+function demoAsyncCall() {
+  return new Promise(resolve => setTimeout(() => resolve(), 1500));
+}
+
 export class Home extends Component {
   state = {
     play_video: false,
-    transition: false
+    transition: false,
+    loading: true
   };
+  componentDidMount() {
+    demoAsyncCall().then(() => this.setState({ loading: false }));
+  }
 
   handle_video = () => {
     this.refs.bgv.play();
@@ -20,6 +30,11 @@ export class Home extends Component {
     }, 1200);
   };
   render() {
+    const { loading } = this.state;
+
+    if (loading) {
+      return <Loading />;
+    }
     return (
       <div className="home-page">
         <Navbar />
