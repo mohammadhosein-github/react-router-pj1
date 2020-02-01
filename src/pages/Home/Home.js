@@ -4,10 +4,6 @@ import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import Loading from "../Loading/Loading";
 
-function demoAsyncCall() {
-  return new Promise(resolve => setTimeout(() => resolve(), 1500));
-}
-
 export class Home extends Component {
   state = {
     play_video: false,
@@ -15,7 +11,7 @@ export class Home extends Component {
     loading: true
   };
   componentDidMount() {
-    demoAsyncCall().then(() => this.setState({ loading: false }));
+    this.setState({ loading: false });
   }
 
   handle_video = () => {
