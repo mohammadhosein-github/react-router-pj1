@@ -1,0 +1,210 @@
+.home-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  color: #fff;
+  z-index: 5;
+  overflow-x: hidden;
+
+  @include sm-size {
+    justify-content: inherit;
+    flex-direction: column;
+  }
+
+  .homepage-video {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80vw;
+    height: auto;
+    z-index: -1;
+
+    @include sm-size {
+      position: relative;
+      top: 5%;
+      left: 0;
+      width: 100vw;
+      transform: translateY(0);
+    }
+
+    &.right {
+      left: null;
+      right: -10vw;
+    }
+
+    &.left {
+      right: null;
+      left: 0;
+    }
+  }
+
+  .text-area1 {
+    margin-left: 12vw;
+    animation: hidden-area 1.5s linear forwards;
+    animation-play-state: paused;
+
+    @include sm-size {
+      position: absolute;
+      top: 40vh;
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-weight: 300;
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 4rem;
+      letter-spacing: 3vw;
+
+      @include sm-size {
+        font-size: 3rem;
+      }
+    }
+
+    p {
+      margin-top: 1.2rem;
+      margin-bottom: 4rem;
+      font-size: 1.3rem;
+
+      @include sm-size {
+        margin-top: .1rem;
+        margin-bottom: 2rem;
+        line-height: 1.7rem;
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.9);
+      }
+    }
+
+    .what-we-do-btn {
+      @include sm-size {
+        text-align: center;
+      }
+
+      button {
+        background-color: transparent;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 0.35rem;
+        padding: 1.3rem 2.5rem;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    &.hidden-area {
+      animation-play-state: running;
+    }
+  }
+
+  .text-area2 {
+    margin-right: 10vw;
+    width: 33vw;
+    animation: show-area 2s linear forwards;
+    animation-play-state: paused;
+
+    @include sm-size {
+      position: absolute;
+      top: 43%;
+      width: 85%;
+      margin: 0 auto;
+    }
+
+    h3 {
+      position: relative;
+      font-size: 2rem;
+      font-weight: 500;
+      text-transform: capitalize;
+      padding-left: 20px;
+
+      @include sm-size {
+        font-size: 1.25rem;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 5%;
+        left: 0;
+        height: 95%;
+        width: 4px;
+        background-color: #fff;
+        border-radius: 5px;
+      }
+    }
+
+    p {
+      margin-top: 2.5rem;
+      color: rgba(255, 255, 255, 0.65);
+      line-height: 1.5rem;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+
+      @include sm-size {
+        font-size: 1rem;
+        line-height: 1.4rem;
+        margin-top: 1.5rem;
+        display: none;
+      }
+    }
+
+    .achievements-btn {
+      color: rgb(95, 196, 255);
+      font-size: 1.2rem;
+
+    }
+
+    &.show-area {
+      animation-play-state: running;
+
+      @include sm-size {
+        margin-bottom: 6rem;
+
+        p {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@keyframes hidden-area {
+  0% {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+}
+
+@keyframes show-area {
+
+  0%,
+  70% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

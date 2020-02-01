@@ -1,0 +1,68 @@
+$main-bg-color: #05060B;
+$primary-font: 'dabp-font';
+
+@mixin lg-size {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin md-size {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin sm-size {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "dabp-font";
+  background-color: $main-bg-color;
+}
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.my-link {
+  text-transform: capitalize;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.my-link {
+  text-decoration: none;
+}
+
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper>div {
+  position: absolute;
+}

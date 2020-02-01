@@ -1,0 +1,91 @@
+.my-navbar {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: 15px 25px;
+  background-color: transparent;
+  z-index: 100;
+
+  @include sm-size {
+    bottom: 0;
+    top: auto;
+    padding: 0;
+    background-color: #000;
+  }
+
+  .site-logo {
+    display: inline-block;
+    visibility: visible;
+    height: 8vw;
+    width: 8vw;
+    border-radius: 50%;
+
+    &.hidden {
+      display: none;
+      visibility: hidden;
+    }
+
+    @include sm-size {
+      visibility: hidden;
+      display: none;
+    }
+  }
+
+  ul {
+    display: inline-block;
+    padding: 15px 15px 0 0;
+
+    @include sm-size {
+      padding: 0;
+      padding-top: 15px;
+    }
+
+    li {
+      position: relative;
+      display: inline-block;
+      margin-left: 30px;
+      text-decoration: none;
+      color: #fff;
+
+      @include sm-size {
+        margin: 0;
+        width: 25vw;
+        text-align: center;
+      }
+
+      i {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1.8rem;
+        display: none;
+        z-index: -1;
+
+        @include sm-size {
+          display: inline-block;
+        }
+      }
+
+      .my-link {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        z-index: 10;
+
+        @include sm-size {
+          display: inline-block;
+          width: 25vw;
+          padding: 10vw 0px 4vw;
+          font-size: 0.7rem;
+          font-weight: 500;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+}

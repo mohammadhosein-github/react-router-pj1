@@ -1,0 +1,219 @@
+$join-us-bg-img: url('../../media/contact-bg1.jpg');
+$join-us-bg-gif: url('../../media/contact-after-bg2.gif');
+$p-color: rgba(255, 255, 255, 0.6);
+$label-color: rgba(255, 255, 255, 0.7);
+$mobile-size-label-color: rgba(255, 255, 255, 0.9);
+$label-active-color: rgba(204, 0, 255, 0.822);
+$input-border-color: rgba(255, 255, 255, 0.5);
+$btn-border-color: rgba(255, 255, 255, 0.4);
+$btn-active-border-color: rgba(151, 128, 255, 0.8);
+$email-description: rgba(255, 255, 255, 0.5);
+$warning-border-color: rgba(0, 57, 131, 0.7);
+$warning-bg-color: rgba(0, 0, 0, 0.5);
+$mobile-size-warning-bg-color: rgba(0, 0, 0, 0.7);
+
+.contact {
+    font-family: $primary-font;
+    position: absolute;
+    width: 100vw;
+    min-height: 100vh;
+    background-image: $join-us-bg-img;
+    background-size: auto 100%;
+    background-position: 450px center;
+    background-repeat: no-repeat;
+    background-color: $main-bg-color;
+    z-index: 0;
+
+    @include lg-size {
+        background-position: center center;
+    }
+
+    @include sm-size {
+        background-position: center center;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.25);
+            z-index: -1;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: $join-us-bg-gif;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        opacity: 0.1;
+        z-index: -1;
+
+        @include sm-size() {
+            opacity: 0.2;
+        }
+    }
+
+    .form-container {
+        width: 600px;
+        color: #fff;
+        margin-top: 20vh;
+        margin-left: 130px;
+        z-index: 100;
+
+        @include md-size {
+            width: 85%;
+            margin: 15vh auto;
+        }
+
+        h3 {
+            letter-spacing: 1px;
+            word-spacing: 1px;
+            font-size: 2rem;
+        }
+
+        p {
+            color: $p-color;
+            line-height: 1.45rem;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        form {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+
+            @include sm-size {
+                flex-direction: column;
+                margin-bottom: 12px;
+            }
+
+            .email {
+                display: inline-block;
+                position: relative;
+                margin-bottom: 20px;
+
+                label {
+                    position: absolute;
+                    top: 10px;
+                    left: 15px;
+                    font-weight: 400;
+                    pointer-events: none;
+                    transition: 0.2s ease-in-out;
+                    color: $label-color;
+
+                    @include sm-size {
+                        color: $mobile-size-label-color;
+                        font-weight: 500;
+                    }
+
+                    &.stay-above {
+                        top: -15px;
+                        left: 0;
+                        color: lighten($label-active-color, 30);
+                    }
+                }
+
+                input {
+                    width: 350px;
+                    background-color: transparent;
+                    border: none;
+                    border-bottom: 1px solid $input-border-color;
+                    color: #fff;
+                    padding: 10px 15px;
+                    text-transform: capitalize;
+                    letter-spacing: 2px;
+                    font-weight: 300;
+
+                    @include sm-size {
+                        width: 100%;
+                    }
+
+                    &:focus {
+                        outline: none;
+
+                        +label {
+                            top: -15px;
+                            left: 0;
+                            color: lighten($label-active-color, 30);
+                        }
+                    }
+                }
+            }
+
+            button {
+                display: inline-block;
+                height: 40px;
+                padding: 0 30px;
+                background-color: transparent;
+                border: 1px solid $btn-border-color;
+                color: #fff;
+                margin-right: 20px;
+                transition: 0.3s linear;
+
+                &:focus {
+                    outline: transparent;
+                    border-color: $btn-active-border-color;
+                }
+
+                @include sm-size {
+                    margin-right: 0;
+                }
+            }
+        }
+
+        .email-description {
+            margin: 0;
+            color: $email-description;
+            font-size: 0.8rem;
+        }
+    }
+
+    .email-warning {
+        position: fixed;
+        bottom: -50px;
+        left: 50%;
+        margin-bottom: 10px;
+        width: 80vw;
+        height: 10vh;
+        line-height: 10vh;
+        text-align: center;
+        transform: translateX(-50%);
+        background-color: $warning-bg-color;
+        color: #fff;
+        border: 1px solid $warning-border-color;
+        border-radius: 3px;
+        text-transform: capitalize;
+        word-spacing: 2px;
+        opacity: 0;
+        transition: 0.5s ease-in-out;
+
+        &.show {
+            bottom: 0;
+            opacity: 1;
+        }
+
+        @include sm-size {
+            bottom: auto;
+            top: -50px;
+            height: 10vh;
+            width: 90vw;
+            font-size: 0.8rem;
+            background-color: $mobile-size-warning-bg-color;
+
+            &.show {
+                top: 3vh;
+            }
+        }
+    }
+
+}
