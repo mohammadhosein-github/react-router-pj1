@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AnimatedSwitch } from "react-router-transition";
 import Loadable from "react-loadable";
 import ErrorPage from "./pages/Error/Error";
 import eye from "./media/eye.jpg";
@@ -162,12 +161,6 @@ class App extends Component {
       <Router>
         <div className="App">
           <Switch>
-            <AnimatedSwitch
-              atEnter={{ opacity: 0 }}
-              atLeave={{ opacity: 0 }}
-              atActive={{ opacity: 1 }}
-              className="switch-wrapper"
-            >
               <Route path="/" exact component={LoadableHomePage} />
               <Route
                 path="/achievements"
@@ -189,7 +182,6 @@ class App extends Component {
               />
               <Route path="/join-us" component={LoadableContactPage} />
               <Route component={ErrorPage} />
-            </AnimatedSwitch>
           </Switch>
         </div>
       </Router>
