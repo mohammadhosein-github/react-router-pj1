@@ -1,8 +1,22 @@
 import React, { Component } from "react";
+import Loading from "../Loading/Loading";
 import Navbar from "../Navbar";
 
 export class About extends Component {
+  state = {
+    loading: true
+  };
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1500);
+  }
+
   render() {
+    if (this.state.loading) {
+      return <Loading />;
+    }
     return (
       <div className="about achievements">
         <Navbar />

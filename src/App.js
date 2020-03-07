@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import Loading from "./pages/Loading/Loading";
 import ErrorPage from "./pages/Error/Error";
 import Home from "./pages/Home/Home";
 import Achievements from "./pages/Achievements/Achievements";
@@ -72,10 +73,20 @@ class App extends Component {
         description:
           "Nam ullam laboriosam eveniet dolorum beatae modi iure corporis sunt fugiat. Rerum amet voluptatum error in id cupiditate accusantium ratione nesciunt ipsa recusandae velit voluptas, voluptatibus enim, dicta facilis quaerat nulla? Dignissimos, molestias minima alias natus autem fugiat magnam tempore ab vitae suscipit exercitationem explicabo."
       }
-    ]
+    ],
+    loading: true
   };
 
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false });
+    }, 1000);
+  }
+
   render() {
+    if (this.state.loading) {
+      return <Loading />;
+    }
     return (
       <Router>
         <div className="App">

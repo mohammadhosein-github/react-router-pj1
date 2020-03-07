@@ -28,7 +28,7 @@ export class Home extends Component {
   render() {
     const { loading } = this.state;
 
-    if (loading) {
+    if (loading === true) {
       return <Loading />;
     }
     return (

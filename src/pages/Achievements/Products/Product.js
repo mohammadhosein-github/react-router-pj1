@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export class Product extends Component {
   render() {
-    console.log(this.props.products);
     return (
       <ul className="products">
         {this.props.products.map(elem => (
